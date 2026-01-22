@@ -60,4 +60,4 @@ Contributions are welcome! To contribute:
 ---
 
 ## Thanks for using Join Actions
-You can also find this plugin on [Modrinth](https://modrinth.com/mod/Join-Actions), [CurseForge]()
+You can also find this plugin on [Modrinth](https://modrinth.com/mod/Join-Actions), [CurseForge](https://www.curseforge.com/minecraft/mc-mods/join-actions)
