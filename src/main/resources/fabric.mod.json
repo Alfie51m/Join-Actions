@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "join-actions",
+	"version": "${version}",
+	"name": "Join Actions",
+	"description": "A utility mod that executes a set command when you join a listed server.",
+	"authors": [
+		"Alfie51m"
+	],
+	"contact": {
+		"sources": "https://github.com/Alfie51m/Join-Actions"
+	},
+	"license": "Apache-2.0",
+	"icon": "assets/join-actions/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"client": [
+			"com.alfie51m.joinactions.JoinActionsClient"
+		],
+		"modmenu": [
+			"com.alfie51m.joinactions.JoinActionsModMenu"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggets": {
+		"modmenu": "*",
+		"cloth-config2": "*"
+	}
+}
