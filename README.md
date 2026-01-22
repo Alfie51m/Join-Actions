@@ -18,7 +18,7 @@ It’s designed to be simple, configurable, and safe to use across multiple serv
 
 ## 📦 Requirements
 
-- **Minecraft:** 1.21.1+
+- **Minecraft:** 1.21.10+
 - **Fabric Loader:** 0.18.4+
 - **Fabric API**
 
