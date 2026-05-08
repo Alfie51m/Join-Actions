@@ -5,7 +5,7 @@ import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.Component;
 
 public class JoinActionsModMenu implements ModMenuApi {
 
@@ -16,12 +16,12 @@ public class JoinActionsModMenu implements ModMenuApi {
 
             ConfigBuilder builder = ConfigBuilder.create()
                     .setParentScreen(parent)
-                    .setTitle(Text.literal("Join Actions"));
+                    .setTitle(Component.literal("Join Actions"));
 
             builder.setSavingRunnable(JoinActionsConfig::save);
 
             ConfigCategory category = builder.getOrCreateCategory(
-                    Text.literal("Servers")
+                    Component.literal("Servers")
             );
 
             ConfigEntryBuilder entryBuilder = builder.entryBuilder();
@@ -31,7 +31,7 @@ public class JoinActionsModMenu implements ModMenuApi {
 
                 category.addEntry(
                         entryBuilder.startStrField(
-                                        Text.literal("Server " + (i + 1)),
+                                        Component.literal("Server " + (i + 1)),
                                         JoinActionsConfig.servers[i]
                                 )
                                 .setSaveConsumer(value ->
@@ -42,7 +42,7 @@ public class JoinActionsModMenu implements ModMenuApi {
 
                 category.addEntry(
                         entryBuilder.startStrField(
-                                        Text.literal("Command " + (i + 1)),
+                                        Component.literal("Command " + (i + 1)),
                                         JoinActionsConfig.commands[i]
                                 )
                                 .setSaveConsumer(value ->

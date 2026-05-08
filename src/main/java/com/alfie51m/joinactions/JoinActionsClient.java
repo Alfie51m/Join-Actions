@@ -3,8 +3,8 @@ package com.alfie51m.joinactions;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ServerInfo;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ServerData;
 
 public class JoinActionsClient implements ClientModInitializer {
 
@@ -15,14 +15,14 @@ public class JoinActionsClient implements ClientModInitializer {
 		JoinActionsConfig.load();
 
 		ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
-			MinecraftClient mc = MinecraftClient.getInstance();
-			ServerInfo serverInfo = mc.getCurrentServerEntry();
-			if (serverInfo == null) return;
+			Minecraft mc = Minecraft.getInstance();
+			ServerData serverData = mc.getCurrentServer();
+			if (serverData == null) return;
 
 			JoinActionsConfig.load();
 			if (hasRunThisConnection) return;
 
-			String currentAddress = serverInfo.address.toLowerCase();
+			String currentAddress = serverData.ip.toLowerCase();
 
 			for (int i = 0; i < 4; i++) {
 				String server = JoinActionsConfig.servers[i];
@@ -37,9 +37,9 @@ public class JoinActionsClient implements ClientModInitializer {
 					ClientTickEvents.END_CLIENT_TICK.register(c -> {
 						if (!executed[0]
 								&& c.player != null
-								&& c.player.networkHandler != null) {
+								&& c.player.connection != null) {
 
-							c.player.networkHandler.sendChatCommand(command);
+							c.player.connection.sendCommand(command);
 							executed[0] = true;
 						}
 					});
