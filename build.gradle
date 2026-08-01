@@ -11,8 +11,7 @@ base {
 }
 
 repositories {
-	maven { url "https://maven.shedaniel.me/" }
-	maven { url "https://maven.terraformersmc.com/releases/" }
+	maven { url "https://api.modrinth.com/maven" }
 }
 
 dependencies {
@@ -21,8 +20,8 @@ dependencies {
 	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
-	implementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-	implementation "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
+	implementation "maven.modrinth:mOgUt4GM:${project.modmenu_version}"
+	implementation "maven.modrinth:9s6osm5g:${project.cloth_config_version}"
 	
 }
 
