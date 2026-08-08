@@ -1,0 +1,44 @@
+# Builds the mod and publishes the resulting jar(s) to GitHub Releases,
+# Modrinth, and CurseForge whenever a GitHub Release is published.
+#
+# Create the release from the tag you want to publish (e.g. via the GitHub UI,
+# or `gh release create`) and this workflow takes care of the rest.
+
+name: publish
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v7
+      - name: validate gradle wrapper
+        uses: gradle/actions/wrapper-validation@v6
+      - name: setup jdk
+        uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: 'microsoft'
+      - name: make gradle wrapper executable
+        run: chmod +x ./gradlew
+      - name: build
+        run: ./gradlew build
+
+      - name: publish to github, modrinth & curseforge
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          # --- Modrinth ---
+          modrinth-id: jOUaUpc9
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          # --- CurseForge ---
+          curseforge-id: 1440815
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+          # --- GitHub Releases ---
+          github-token: ${{ secrets.GITHUB_TOKEN }}
