@@ -29,7 +29,7 @@
 		"java": ">=25",
 		"fabric-api": "*"
 	},
-	"suggets": {
+	"suggests": {
 		"modmenu": "*",
 		"cloth-config2": "*"
 	}
